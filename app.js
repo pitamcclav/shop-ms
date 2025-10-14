@@ -14,11 +14,11 @@ app.prepare().then(() => {
             res.statusCode = 500;
             res.end('internal server error');
         }
-    }).listen(process.env.PORT || 3000, (err) => {
+    }).listen(process.env.PORT || 3001, (err) => {
         if (err) {
             console.error('Error starting server:', err);
             process.exit(1);
         }
-        console.log('> Server running on port', process.env.PORT || 3000);
+        console.log('> Server running on port', process.env.PORT || 3001);
     });
 });
