@@ -17,7 +17,13 @@ export async function GET(
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    return NextResponse.json(rows[0]);
+    const product = {
+      ...rows[0],
+      buying_price: parseFloat(rows[0].buying_price as string),
+      selling_price: parseFloat(rows[0].selling_price as string),
+    };
+
+    return NextResponse.json(product);
   } catch (error) {
     console.error("Error fetching product:", error);
     return NextResponse.json({ error: "Failed to fetch product" }, { status: 500 });
@@ -58,7 +64,12 @@ export async function PUT(
     }
 
     const [updatedProduct] = await pool.query<RowDataPacket[]>("SELECT * FROM products WHERE id = ?", [id]);
-    return NextResponse.json(updatedProduct[0]);
+    const product = {
+      ...updatedProduct[0],
+      buying_price: parseFloat(updatedProduct[0].buying_price as string),
+      selling_price: parseFloat(updatedProduct[0].selling_price as string),
+    };
+    return NextResponse.json(product);
   } catch (error) {
     console.error("Error updating product:", error);
     return NextResponse.json({ error: "Failed to update product" }, { status: 500 });

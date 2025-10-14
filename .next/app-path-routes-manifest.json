@@ -2,9 +2,9 @@
   "/_not-found/page": "/_not-found",
   "/favicon.ico/route": "/favicon.ico",
   "/api/products/route": "/api/products",
-  "/api/products/[id]/route": "/api/products/[id]",
   "/api/sales/route": "/api/sales",
   "/api/purchases/route": "/api/purchases",
+  "/api/products/[id]/route": "/api/products/[id]",
   "/api/stats/route": "/api/stats",
   "/page": "/"
 }

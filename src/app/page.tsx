@@ -211,13 +211,13 @@ export default function Home() {
               <div className="bg-white rounded-lg shadow p-6">
                 <h3 className="text-gray-500 text-sm font-medium">Total Revenue</h3>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
-                  ${stats.totalRevenue.toFixed(2)}
+                  UGX {Math.round(stats.totalRevenue)}
                 </p>
               </div>
               <div className="bg-green-50 rounded-lg shadow p-6 border border-green-200">
                 <h3 className="text-green-700 text-sm font-medium">Total Profit</h3>
                 <p className="text-3xl font-bold text-green-600 mt-2">
-                  ${stats.totalProfit.toFixed(2)}
+                  UGX {Math.round(stats.totalProfit)}
                 </p>
               </div>
             </div>
@@ -281,14 +281,14 @@ export default function Home() {
                             <td className="px-6 py-4 whitespace-nowrap">{sale.product_name}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{sale.quantity}</td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              ${sale.selling_price.toFixed(2)}
+                              UGX {Math.round(sale.selling_price)}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              ${sale.total_price.toFixed(2)}
+                              UGX {Math.round(sale.total_price)}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <span className={sale.profit < 0 ? "text-red-600 font-semibold" : "text-green-600 font-semibold"}>
-                                ${sale.profit.toFixed(2)}
+                                UGX {Math.round(sale.profit)}
                               </span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
@@ -385,10 +385,10 @@ export default function Home() {
                           {product.category || "-"}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          ${product.buying_price.toFixed(2)}
+                          UGX {Math.round(product.buying_price)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          ${product.selling_price.toFixed(2)}
+                          UGX {Math.round(product.selling_price)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={isProfit ? "text-green-600 font-semibold" : "text-red-600 font-semibold"}>
@@ -490,10 +490,10 @@ export default function Home() {
                         <td className="px-6 py-4 whitespace-nowrap">{purchase.product_name}</td>
                         <td className="px-6 py-4 whitespace-nowrap">{purchase.quantity}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          ${purchase.buying_price.toFixed(2)}
+                          UGX {Math.round(purchase.buying_price)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap font-semibold">
-                          ${purchase.total_cost.toFixed(2)}
+                          UGX {Math.round(purchase.total_cost)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           {purchase.supplier || "-"}
@@ -560,14 +560,14 @@ export default function Home() {
                         <td className="px-6 py-4 whitespace-nowrap">{sale.product_name}</td>
                         <td className="px-6 py-4 whitespace-nowrap">{sale.quantity}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          ${sale.selling_price.toFixed(2)}
+                          UGX {Math.round(sale.selling_price)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap font-semibold">
-                          ${sale.total_price.toFixed(2)}
+                          UGX {Math.round(sale.total_price)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={sale.profit < 0 ? "text-red-600 font-bold" : "text-green-600 font-bold"}>
-                            ${sale.profit.toFixed(2)}
+                            UGX {Math.round(sale.profit)}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">

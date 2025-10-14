@@ -187,7 +187,7 @@ export default function PurchaseForm({ products, onSubmitAction }: PurchaseFormP
               💡 <strong>Conversion:</strong> You're buying {formData.quantity} {formData.package_name || 'package'}(s) × {formData.units_per_package} pieces = <span className="font-semibold">{formData.quantity * formData.units_per_package} individual pieces</span>
             </p>
             <p className="text-xs text-gray-600 mt-1">
-              Price per piece: ${(formData.buying_price / formData.units_per_package).toFixed(2)} buying | ${(formData.selling_price / formData.units_per_package).toFixed(2)} selling
+              Price per piece: UGX {Math.round(formData.buying_price / formData.units_per_package)} buying | UGX {Math.round(formData.selling_price / formData.units_per_package)} selling
             </p>
           </div>
         )}
@@ -197,12 +197,12 @@ export default function PurchaseForm({ products, onSubmitAction }: PurchaseFormP
         <div className={`p-4 rounded-md border ${formData.buying_price > formData.selling_price ? 'bg-red-50 border-red-200' : 'bg-blue-50 border-blue-200'}`}>
           <p className="text-sm font-medium mb-2 text-gray-700">Purchase Summary:</p>
           <div className="space-y-1 text-sm text-gray-600">
-            <p>Total Cost: <span className="font-semibold">${(formData.buying_price * formData.quantity).toFixed(2)}</span></p>
+            <p>Total Cost: <span className="font-semibold">UGX {Math.round(formData.buying_price * formData.quantity)}</span></p>
             <p>New Stock: <span className="font-semibold">{selectedProduct.stock + formData.quantity}</span></p>
-            <p>Current Avg. Buying Price: <span className="font-semibold">${selectedProduct.buying_price.toFixed(2)}</span></p>
-            <p>Selling Price: <span className="font-semibold">${formData.selling_price.toFixed(2)}</span></p>
+            <p>Current Avg. Buying Price: <span className="font-semibold">UGX {Math.round(selectedProduct.buying_price)}</span></p>
+            <p>Selling Price: <span className="font-semibold">UGX {Math.round(formData.selling_price)}</span></p>
             <p>Expected Profit per Unit: <span className={`font-semibold ${formData.selling_price > formData.buying_price ? 'text-green-600' : 'text-red-600'}`}>
-              ${(formData.selling_price - formData.buying_price).toFixed(2)} ({((formData.selling_price - formData.buying_price) / formData.selling_price * 100).toFixed(1)}%)
+              UGX {Math.round(formData.selling_price - formData.buying_price)} ({((formData.selling_price - formData.buying_price) / formData.selling_price * 100).toFixed(1)}%)
             </span></p>
             {formData.buying_price > formData.selling_price && (
               <p className="text-red-600 font-semibold mt-2">⚠️ Warning: Buying price is higher than selling price!</p>

@@ -22,7 +22,14 @@ export async function GET() {
       ORDER BY s.sale_date DESC
     `);
     
-    return NextResponse.json(rows);
+    const sales = rows.map(row => ({
+      ...row,
+      selling_price: parseFloat(row.selling_price as string),
+      total_price: parseFloat(row.total_price as string),
+      profit: parseFloat(row.profit as string),
+    }));
+    
+    return NextResponse.json(sales);
   } catch (error) {
     console.error("Error fetching sales:", error);
     return NextResponse.json({ error: "Failed to fetch sales" }, { status: 500 });
@@ -107,8 +114,11 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ 
       ...newSale[0], 
+      selling_price: parseFloat(newSale[0].selling_price as string),
+      total_price: parseFloat(newSale[0].total_price as string),
+      profit: parseFloat(newSale[0].profit as string),
       warning: isBelowCost ? "Warning: Selling price is below buying price!" : null,
-      buying_price: product.buying_price
+      buying_price: parseFloat(product.buying_price as string)
     }, { status: 201 });
   } catch (error) {
     await connection.rollback();

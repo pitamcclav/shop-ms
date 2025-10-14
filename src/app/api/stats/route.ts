@@ -71,13 +71,30 @@ export async function GET() {
     return NextResponse.json({
       totalProducts: totalProducts[0].count,
       totalSales: totalSales[0].count,
-      totalRevenue: revenue[0].total || 0,
-      totalProfit: revenue[0].profit || 0,
-      totalCost: cost[0].total || 0,
-      lowStockProducts: lowStock,
-      recentSales,
-      recentPurchases,
-      salesByCategory,
+      totalRevenue: parseFloat(revenue[0].total) || 0,
+      totalProfit: parseFloat(revenue[0].profit) || 0,
+      totalCost: parseFloat(cost[0].total) || 0,
+      lowStockProducts: lowStock.map(product => ({
+        ...product,
+        buying_price: parseFloat(product.buying_price as string),
+        selling_price: parseFloat(product.selling_price as string),
+      })),
+      recentSales: recentSales.map(sale => ({
+        ...sale,
+        selling_price: parseFloat(sale.selling_price as string),
+        total_price: parseFloat(sale.total_price as string),
+        profit: parseFloat(sale.profit as string),
+      })),
+      recentPurchases: recentPurchases.map(purchase => ({
+        ...purchase,
+        buying_price: parseFloat(purchase.buying_price as string),
+        total_cost: parseFloat(purchase.total_cost as string),
+      })),
+      salesByCategory: salesByCategory.map(category => ({
+        ...category,
+        total_revenue: parseFloat(category.total_revenue as string),
+        total_profit: parseFloat(category.total_profit as string),
+      })),
     });
   } catch (error) {
     console.error("Error fetching stats:", error);

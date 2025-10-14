@@ -8,7 +8,12 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const [rows] = await pool.query<RowDataPacket[]>("SELECT * FROM products ORDER BY created_at DESC");
-    return NextResponse.json(rows);
+    const products = rows.map(row => ({
+      ...row,
+      buying_price: parseFloat(row.buying_price as string),
+      selling_price: parseFloat(row.selling_price as string),
+    }));
+    return NextResponse.json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
     return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
@@ -46,7 +51,13 @@ export async function POST(request: NextRequest) {
 
     const [newProduct] = await pool.query<RowDataPacket[]>("SELECT * FROM products WHERE id = ?", [result.insertId]);
 
-    return NextResponse.json(newProduct[0], { status: 201 });
+    const product = {
+      ...newProduct[0],
+      buying_price: parseFloat(newProduct[0].buying_price as string),
+      selling_price: parseFloat(newProduct[0].selling_price as string),
+    };
+
+    return NextResponse.json(product, { status: 201 });
   } catch (error) {
     console.error("Error creating product:", error);
     return NextResponse.json({ error: "Failed to create product" }, { status: 500 });

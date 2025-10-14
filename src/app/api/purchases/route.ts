@@ -22,7 +22,13 @@ export async function GET() {
       ORDER BY pu.purchase_date DESC
     `);
     
-    return NextResponse.json(rows);
+    const purchases = rows.map(row => ({
+      ...row,
+      buying_price: parseFloat(row.buying_price as string),
+      total_cost: parseFloat(row.total_cost as string),
+    }));
+    
+    return NextResponse.json(purchases);
   } catch (error) {
     console.error("Error fetching purchases:", error);
     return NextResponse.json({ error: "Failed to fetch purchases" }, { status: 500 });
@@ -118,7 +124,13 @@ export async function POST(request: NextRequest) {
       WHERE pu.id = ?
     `, [purchaseResult.insertId]);
 
-    return NextResponse.json(newPurchase[0], { status: 201 });
+    const purchase = {
+      ...newPurchase[0],
+      buying_price: parseFloat(newPurchase[0].buying_price as string),
+      total_cost: parseFloat(newPurchase[0].total_cost as string),
+    };
+
+    return NextResponse.json(purchase, { status: 201 });
   } catch (error) {
     await connection.rollback();
     console.error("Error creating purchase:", error);
