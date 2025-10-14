@@ -9,8 +9,8 @@ const { createServer } = require('http');
 const { parse } = require('url');
 const next = require('next');
 
-// Get port from environment or use 3000 as default
-const port = parseInt(process.env.PORT || '3000', 10);
+// Get port from environment or use 3001 as default
+const port = parseInt(process.env.PORT || '3001', 10);
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = process.env.HOSTNAME || 'localhost';
 
