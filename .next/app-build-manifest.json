@@ -29,12 +29,12 @@
       "static/chunks/main-app-3cb7550b40bdda2d.js",
       "static/chunks/app/api/purchases/route-3a094db93fd61aff.js"
     ],
-    "/api/stats/route": [
+    "/api/products/[id]/route": [
       "static/chunks/webpack-8ce9a769f24399bd.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-839588e0f3decf6f.js",
       "static/chunks/main-app-3cb7550b40bdda2d.js",
-      "static/chunks/app/api/stats/route-3a094db93fd61aff.js"
+      "static/chunks/app/api/products/[id]/route-3a094db93fd61aff.js"
     ],
     "/api/sales/route": [
       "static/chunks/webpack-8ce9a769f24399bd.js",
@@ -43,12 +43,12 @@
       "static/chunks/main-app-3cb7550b40bdda2d.js",
       "static/chunks/app/api/sales/route-3a094db93fd61aff.js"
     ],
-    "/api/products/[id]/route": [
+    "/api/stats/route": [
       "static/chunks/webpack-8ce9a769f24399bd.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-839588e0f3decf6f.js",
       "static/chunks/main-app-3cb7550b40bdda2d.js",
-      "static/chunks/app/api/products/[id]/route-3a094db93fd61aff.js"
+      "static/chunks/app/api/stats/route-3a094db93fd61aff.js"
     ],
     "/page": [
       "static/chunks/webpack-8ce9a769f24399bd.js",
