@@ -42,3 +42,4 @@ next-env.d.ts
 shop.db
 shop.db-shm
 shop.db-wal
+node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node
